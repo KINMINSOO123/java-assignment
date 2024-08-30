@@ -4,20 +4,10 @@
  */
 package shoes;
 
-import java.util.Date;
-
 /**
  *
  * @author ASUS
  */
-public class CustomerReview{
-    
-    private String reviewId;
-    private Customer customer;
-    private Product product;
-    private float rating;
-    private String reviewText;
-    private Date reviewDate;
-    
+public class PremiumCustomer {
     
 }

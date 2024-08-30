@@ -17,4 +17,13 @@ public class InventoryAudit {
     private Date auditDate;
     private String auditorName;
     private String discrepancies;
+    
+    public InventoryAudit(String auditId,Inventory inventory, Date auditDate, String auditorName, String discrepancies){
+        
+        this.auditId = auditId;
+        this.inventory = inventory;
+        this.auditDate = auditDate;
+        this.auditorName = auditorName;
+        this.discrepancies = discrepancies;
+    }
 }

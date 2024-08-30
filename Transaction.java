@@ -17,4 +17,12 @@ public class Transaction {
     private Date transactionDate;
     private String transactionType;
     private String status;
+    
+    public Transaction(String transactionId,Payment payment,Date transactionDate,String transactionType,String status){
+        this.transactionId = transactionId;
+        this.payment = payment;
+        this.transactionDate = transactionDate;
+        this.transactionType = transactionType;
+        this.status = status;
+    }
 }

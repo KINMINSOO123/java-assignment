@@ -4,6 +4,7 @@
  */
 package shoes;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,8 +14,18 @@ import java.util.Date;
 public class ShippingDetails {
     
     private String shippingId;
-    private Order order;
+    private ArrayList<Order> orders;
     private String shippingAddress;
     private Date deliveryDate;
     private int trackingNum;
+    
+    public ShippingDetails(String shippingId,String shippingAddress,Date deliveryDate,int trackingNum){
+        this.shippingId = shippingId;
+        this.shippingAddress = shippingAddress;
+        this.deliveryDate = deliveryDate;
+        this.trackingNum = trackingNum;
+        this.orders = new ArrayList<Order>();
+    }
+    
+    
 }

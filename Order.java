@@ -17,7 +17,77 @@ public class Order {
     private Date orderDate;
     private String status;
     private double totalAmount;
-    private ShippingDetails shipDetails;
+    private ShippingDetails shippingDetails;
     
+    public static final String STATUS_PENDING = "Pending";
+    public static final String STATUS_SHIPPED = "Shipped";
+    public static final String STATUS_DELIVERED = "Delivered";
+    public static final String STATUS_CANCELLED = "Cancelled";
     
+    public Order(String orderId,Customer customer,Date orderDate,String status,ShippingDetails shippingDetails){
+        //add this to prevent the compiler confuse whether it is local or class data
+        if(orderId == null || orderId.isEmpty()){
+            orderId = customer.generateOrderId();
+        }
+        this.customer = customer;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.shippingDetails = shippingDetails;
+    }
+    
+    public Customer getCustomer(){
+        return this.customer;
+    }
+    
+    public String getOrderId(){
+        return this.orderId;
+    }
+    
+    public String getOrderDate(){
+        return this.orderDate.toString();
+    }
+    
+    public String getStatus(){
+        return this.status;
+    }
+    
+    public double getTotalAmount(){
+        return this.totalAmount;
+    }
+    
+    public ShippingDetails getShippingDetails(){
+        return this.shippingDetails;
+    }
+    
+    public void setOrderDate(Date orderDate){
+        this.orderDate = orderDate;
+    }
+    
+    public void setStatus(String status){
+        this.status = status;
+    }
+    
+    public void setTotalAmount(double totalAmount){
+        this.totalAmount = totalAmount;
+    }
+    
+    public void setShippingDetails(ShippingDetails shippingDetails){
+        this.shippingDetails = shippingDetails;
+    }
+    
+    public void updateOrderStatus(String newStatus) {
+        // Example validation: An order can only be marked as "Delivered" if it's currently "Shipped"
+        if (newStatus.equals(STATUS_DELIVERED) && !this.status.equals(STATUS_SHIPPED)) {
+            System.out.println("Order " + orderId + " cannot be marked as 'Delivered' unless it is 'Shipped'.");
+            return;
+        }
+
+        // Update the status
+        this.status = newStatus;
+        System.out.println("Order " + orderId + " status has been updated to: " + this.status);
+    }
+    
+    public void calculateTotalAmount(){
+        
+    }
 }

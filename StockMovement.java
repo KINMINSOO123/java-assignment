@@ -10,11 +10,19 @@ import java.util.Date;
  *
  * @author ASUS
  */
-public class StockMovement {
+public class StockMovement extends Inventory{
     private String movementId;
-    private Product product;
     private String fromWarehouseId;
     private String toWarehouseId;
     private int quantityMoved;
     private Date movementDate;
+    
+    public StockMovement(String inventoryId,int quantityAvailable, Warehouse warehouse, String reorderLevel, Date lastUpdated, String movementId, String fromWarehouseId, String toWarehouseId, int quantityMoved, Date movementDate){
+        super(inventoryId,quantityAvailable,warehouse,reorderLevel,lastUpdated);
+        this.movementId = movementId;
+        this.fromWarehouseId = fromWarehouseId;
+        this.toWarehouseId = toWarehouseId;
+        this.quantityMoved = quantityMoved;
+        this.movementDate = movementDate;
+    }
 }

@@ -4,6 +4,7 @@
  */
 package shoes;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,9 +14,16 @@ import java.util.Date;
 public class Inventory {
     
     private String inventoryId;
-    private Product product;
+    private ArrayList<Product> products;
     private int quantityAvailable;
     private Warehouse warehouseLocation;
     private String reorderLevel;
     private Date lastUpdated;
+    
+    public Inventory(String inventoryId,int quantityAvailable, Warehouse warehouse, String reorderLevel, Date lastUpdated){
+        this.inventoryId = inventoryId;
+        this.quantityAvailable = quantityAvailable;
+        this.reorderLevel = reorderLevel;
+        this.lastUpdated = lastUpdated;
+    }
 }
