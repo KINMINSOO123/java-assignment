@@ -35,10 +35,15 @@ public class DressShoe extends Product{
     public void setHeelType(String heelType) {
         this.heelType = heelType;
     }
+    
+    public String productHeader(){
+        return String.format("|%-15s|%-20s|%-15s|%-10s|%-10s|%-10s|%-45s|%-15s|%-12s|\n=================================================================================================================================================================="
+                ,"PRODUCT ID","PRODUCT NAME","BRAND","SIZE","COLOR","PRICE(RM)","DESCRIPTION","MATERIAL","HEEL TYPE");
+    }
 
     @Override
     public String toString() {
-        return super.toString() + String.format("%-10s|%-10s|\n",this.material,this.heelType);
+        return super.toString() + String.format("%-15s|%-12s|",this.material,this.heelType);
     }
 
 }

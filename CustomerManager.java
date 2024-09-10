@@ -60,7 +60,6 @@ public class CustomerManager {
                 return customer;
             }
         }
-        System.out.println("Invalid Email or Password. Please Try again...");
         return null;
     }
     

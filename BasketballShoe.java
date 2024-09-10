@@ -36,8 +36,13 @@ public class BasketballShoe extends Product{
         isHighTop = highTop;
     }
 
+    public String productHeader(){
+        return String.format("|%-15s|%-20s|%-15s|%-10s|%-10s|%-10s|%-45s|%-20s|%-15s|\n=========================================================================================================================================================================="
+                ,"PRODUCT ID","PRODUCT NAME","BRAND","SIZE","COLOR","PRICE(RM)","DESCRIPTION","OCCASION","SLIP ON?");
+    }
+    
     @Override
     public String toString() {
-        return super.toString() + String.format("%-15s|%-15s|\n",ankleSupport,isHighTop ? "Yes" : "No");
+        return super.toString() + String.format("%-20s|%-15s|",ankleSupport,isHighTop ? "Yes" : "No");
     }
 }

@@ -17,5 +17,38 @@ public class Invoice {
     private Date invoiceDate;
     private double totalAmount;
     private Date dueDate;
-    private String status;
+    private boolean isPaid;
+
+    public Invoice(){
+        
+    }
+    public Invoice(String invoiceId, Order order, Date invoiceDate, double totalAmount) {
+        this.invoiceId = invoiceId;
+        this.order = order;
+        this.invoiceDate = invoiceDate;
+        this.totalAmount = totalAmount;
+        this.isPaid = false;
+    }
+
+    // Generate an invoice for an order
+    public String generateInvoice() {
+        return "Invoice ID: " + invoiceId + "\nOrder ID: " + order.getOrderId() + "\nAmount: " + totalAmount;
+    }
+
+    // Retrieve details of a specific invoice
+    public String getInvoiceDetails() {
+        return "Invoice ID: " + invoiceId + "\nOrder ID: " + order.getOrderId() + "\nAmount: " + totalAmount + "\nPaid: " + (isPaid ? "Yes" : "No") + "\nInvoice Date: " + invoiceDate;
+    }
+
+    // Send the invoice to the customer
+    public void sendInvoiceToCustomer(Customer customer) {
+        // Logic to send the invoice (e.g., email or print)
+        System.out.println("Invoice sent to: " + customer.getEmail());
+    }
+
+    // Mark the invoice as paid
+    public void markInvoiceAsPaid() {
+        this.isPaid = true;
+    }
+
 }

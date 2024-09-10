@@ -6,6 +6,7 @@ package shoes;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 
 /**
@@ -22,6 +23,7 @@ public class Customer {
     private int loyaltyPoints;
     private ArrayList<Cart> carts;
     private ArrayList<Order> orders;
+    private Payment payment;
             
     public Customer(){
         this("","","","",null,"");      
@@ -72,6 +74,14 @@ public class Customer {
         return this.password;
     }
     
+    public ArrayList<Order> getOrders(){
+        return this.orders;
+    }
+    
+    public Payment getPayment(){
+        return this.payment;
+    }
+    
     public void setName(String name){
         this.name = name;
     }
@@ -96,8 +106,11 @@ public class Customer {
         this.password = password;
     }
     
+    public void setPayment(Payment payment){
+        this.payment = payment;
+    }
     public Order createOrder(Customer customer,Date orderDate,String status,ShippingDetails shippingDetails){
-        Order newOrder = new Order("",customer,orderDate,status,shippingDetails);
+        Order newOrder = new Order(customer,orderDate,status,shippingDetails);
         this.orders.add(newOrder);
         return newOrder;
     }
@@ -136,8 +149,56 @@ public class Customer {
         return orderDetails;
     }
     
-    //allow a customer to add many product into a cart
-    public void addItemToCart(Product product){
+    public Cart findOrCreateCart(int option){
+        if(option != 0){
+            return this.carts.get(option - 1);
+        }else{
+            Cart newCart = new Cart(generateCartId(),this,new Date());
+            this.carts.add(newCart);
+            return newCart;
+        }
+    }
+    
+    public void removeCart(Cart cart){
+        this.carts.remove(cart);
+    }
+    
+    public String generateCartId(){
+        String cartId = "Cart";
+        int len = 3;
+        boolean nonUnique;
         
+        do{
+            for(int i = 0; i < len; i++){
+                cartId += (int)(Math.random() * 10);
+            }
+            
+            nonUnique = false;
+            
+            for(Cart cart : carts){
+                if(cartId.equals(cart.getCartId())){
+                    nonUnique = true;
+                }
+            }
+        }while(nonUnique);
+        
+        return cartId;
+    }
+    
+    public ArrayList<Cart> getCarts(){
+        return carts;
+    }
+    
+    public int displayCart(){
+        if (this.getCarts().isEmpty()) {
+            System.out.println("You don't have any carts. Create a cart first.");
+            return 0;
+        }
+
+        System.out.println("Select a cart number to perform :");
+        for (int i = 0; i < this.getCarts().size(); i++) {
+            System.out.println((i + 1) + ". Cart ID: " + this.getCarts().get(i).getCartId() + " |Cart AddedDate: " + this.getCarts().get(i).getAddedDate());
+        }
+        return this.getCarts().size();
     }
 }

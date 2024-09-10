@@ -37,8 +37,13 @@ public class RunningShoe extends Product{
         this.soleType = soleType;
     }
     
+    public String productHeader(){
+        return String.format("|%-15s|%-20s|%-15s|%-10s|%-10s|%-10s|%-45s|%-15s|%-20s|\n=========================================================================================================================================================================="
+                ,"PRODUCT ID","PRODUCT NAME","BRAND","SIZE","COLOR","PRICE(RM)","DESCRIPTION","WEIGHT","SOLE TYPE");
+    }
+    
     @Override
     public String toString() {
-        return super.toString() + String.format("%-15d|%-30s\n",weight,soleType);
+        return super.toString() + String.format("%-15f|%-20s|",weight,soleType);
     }
 }

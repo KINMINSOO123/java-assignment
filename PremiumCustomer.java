@@ -8,6 +8,6 @@ package shoes;
  *
  * @author ASUS
  */
-public class PremiumCustomer {
+public class PremiumCustomer extends Customer{
     
 }

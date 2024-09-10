@@ -18,16 +18,19 @@ public class Order {
     private String status;
     private double totalAmount;
     private ShippingDetails shippingDetails;
+    private Invoice invoice;
     
     public static final String STATUS_PENDING = "Pending";
     public static final String STATUS_SHIPPED = "Shipped";
     public static final String STATUS_DELIVERED = "Delivered";
     public static final String STATUS_CANCELLED = "Cancelled";
     
-    public Order(String orderId,Customer customer,Date orderDate,String status,ShippingDetails shippingDetails){
+    public Order(Customer customer,Date orderDate,String status,ShippingDetails shippingDetails){
         //add this to prevent the compiler confuse whether it is local or class data
         if(orderId == null || orderId.isEmpty()){
             orderId = customer.generateOrderId();
+        }else{
+            orderId = "";
         }
         this.customer = customer;
         this.orderDate = orderDate;
@@ -59,6 +62,10 @@ public class Order {
         return this.shippingDetails;
     }
     
+    public Invoice getInvoice(){
+        return this.invoice;
+    }
+    
     public void setOrderDate(Date orderDate){
         this.orderDate = orderDate;
     }
@@ -75,6 +82,9 @@ public class Order {
         this.shippingDetails = shippingDetails;
     }
     
+    public void setInvoice(Invoice invoice){
+        this.invoice = invoice;
+    }
     public void updateOrderStatus(String newStatus) {
         // Example validation: An order can only be marked as "Delivered" if it's currently "Shipped"
         if (newStatus.equals(STATUS_DELIVERED) && !this.status.equals(STATUS_SHIPPED)) {
@@ -87,7 +97,7 @@ public class Order {
         System.out.println("Order " + orderId + " status has been updated to: " + this.status);
     }
     
-    public void calculateTotalAmount(){
-        
+    public void getTotalAmountByCart(Cart cart){
+        this.totalAmount = cart.calculateTotalPriceofAllItem();
     }
 }

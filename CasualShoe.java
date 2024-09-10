@@ -36,8 +36,13 @@ public class CasualShoe extends Product {
         isSlipOn = slipOn;
     }
 
+    public String productHeader(){
+        return String.format("|%-15s|%-20s|%-15s|%-10s|%-10s|%-10s|%-45s|%-20s|%-10s|\n====================================================================================================================================================================="
+                ,"PRODUCT ID","PRODUCT NAME","BRAND","SIZE","COLOR","PRICE(RM)","DESCRIPTION","OCCASION","SLIP ON?");
+    }
+    
     @Override
     public String toString() {
-        return super.toString() + String.format("%-10s|%-10s|\n",occasion,isSlipOn ? "Yes" : "No");       
+        return super.toString() + String.format("%-20s|%-10s|",occasion,isSlipOn ? "Yes" : "No");       
     }
 }

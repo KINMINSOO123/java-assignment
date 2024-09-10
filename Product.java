@@ -8,7 +8,7 @@ package shoes;
  *
  * @author ASUS
  */
-public class Product {
+public abstract class Product {
     
     private String productId;
     private String productName;
@@ -28,8 +28,23 @@ public class Product {
         this.description = description;
     }
     
+    public String getProductID(){
+        return this.productId;
+    }
+    
+    public String getProductName(){
+        return this.productName;
+    }
+    
+    public double getPrice(){
+        return this.price;
+    }
+    
+    public abstract String productHeader();
+            
     public String toString(){
-        return String.format("%-15s|%-20s|%-15s|%-10c|%-10s|%-10d|%-30s|",
+        return String.format("|%-15s|%-20s|%-15s|%-10c|%-10s|%-10.2f|%-45s|",
                 this.productId,this.productName,this.brand,this.size,this.color,this.price,this.description);
     }
+    
 }

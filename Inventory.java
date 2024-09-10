@@ -26,4 +26,10 @@ public class Inventory {
         this.reorderLevel = reorderLevel;
         this.lastUpdated = lastUpdated;
     }
+    
+    public void addProduct(Product product){
+        this.products.add(product);
+        System.out.println("Product " + product.getProductName() + " added to inventory.");
+        this.lastUpdated = new Date();
+    }
 }

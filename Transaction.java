@@ -25,4 +25,21 @@ public class Transaction {
         this.transactionType = transactionType;
         this.status = status;
     }
+    
+    public void recordTransaction() {
+        // Logic to record the transaction (e.g., storing in a database)
+        System.out.println("Transaction recorded: " + transactionId);
+    }
+
+    // Retrieve details of a specific transaction
+    public String getTransactionDetails() {
+        return "Transaction ID: " + transactionId + "\nPayment ID: " + payment.getPaymentDetails() + "\nStatus: " + status + "\nTransaction Date: " + transactionDate;
+    }
+
+    // Update the transaction status
+    public void updateTransactionStatusNType(String newStatus, String newTransactionType) {
+        this.status = newStatus;
+        this.transactionType = newTransactionType;
+    }
+    
 }
